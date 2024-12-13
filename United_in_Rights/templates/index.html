@@ -59,7 +59,7 @@
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img src="{% static 'assets/img/logo/../static/assets/img/logo3.png' %}" alt="">
+          <img src="{% static 'assets/img/logo3.png' %}" alt="">
           <h1 class="sitename">United in Rights</h1>
           <span>.</span>
         </a>
@@ -67,6 +67,7 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="#hero" class="active">Home<br></a></li>
+              <li><a href="{% url 'report_abuse' %}">Report</a></li>
             <li><a href="#about">About</a></li>
               <li class="dropdown"><a href="#services"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
@@ -227,70 +228,7 @@
 
 
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 align-items-center">
-
-          <div class="col-lg-5">
-            <img src="{%  static 'assets/img/stats-img.svg' %}" alt="" class="img-fluid">
-          </div>
-
-          <div class="col-lg-7">
-
-            <div class="row gy-4">
-
-              <div class="col-lg-6">
-                <div class="stats-item d-flex">
-                  <i class="bi bi-emoji-smile flex-shrink-0"></i>
-                  <div>
-                    <span data-purecounter-start="0" data-purecounter-end="2000" data-purecounter-duration="1" class="purecounter"></span>
-                  <p><strong>Happy Clients</strong> {#  <span>consequuntur quae</span></p>#}
-                  </div>
-                </div>
-              </div><!-- End Stats Item -->
-
-              <div class="col-lg-6">
-                <div class="stats-item d-flex">
-                  <i class="bi bi-journal-richtext flex-shrink-0"></i>
-                  <div>
-                    <span data-purecounter-start="0" data-purecounter-end="250" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Branches</strong> {# <span>adipisci atque cum quia aut</span></p> #}
-                  </div>
-                </div>
-              </div><!-- End Stats Item -->
-
-              <div class="col-lg-6">
-                <div class="stats-item d-flex">
-                  <i class="bi bi-headset flex-shrink-0"></i>
-                  <div>
-                    <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Hours Of Support</strong> {# <span>aut commodi quaerat</span></p> #}
-                  </div>
-                </div>
-              </div><!-- End Stats Item -->
-
-              <div class="col-lg-6">
-                <div class="stats-item d-flex">
-                  <i class="bi bi-people flex-shrink-0"></i>
-                  <div>
-                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Qualified Staff Members</strong> {#<span>rerum asperiores dolor</span></p>  #}
-                  </div>
-                </div>
-              </div><!-- End Stats Item -->
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
 
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
@@ -303,7 +241,7 @@
               <h3>Call To Action</h3>
               <p>United in Rights is always a phone call away. By the help of the modern technology we have the ability to reach any victim and respond to any cases as soon as we get the information.
               We are available across all the social media platforms and our hotline number is also available. <br> Just press the button!</p>
-              <a class="cta-btn" href="#contact">Call To Action</a>
+              <a class="cta-btn" href="{% url 'report_abuse' %}">Call To Action</a>
             </div>
           </div>
         </div>
@@ -829,35 +767,42 @@
             <form action="/clients/" method="post" enctype="multipart/form-data"  class="email-form" data-aos="fade" data-aos-delay="100">
                 {% csrf_token %}
 
-              <div class="row gy-4">
+{#              <div class="row gy-4">#}
 
                 <div class="col-md-6">
-                  <input type="text" name="client_name" class="form-control" placeholder="Your Name" required="">
+                 <label>Name</label>
+                 <input type="text" name="victim_name" class="form-control" placeholder="Your Name" required>
                 </div>
-
-                  <br>
-
-
+                <br>
 
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="client_email" placeholder="Your Email" required="">
+                    <label>Email</label>
+                  <input type="email" class="form-control" name="victim_email" placeholder="Your Email" required>
                 </div>
+                <br>
+
+                <div class="col-md-6 ">
+                  <label>Address</label>
+                  <input type="text" class="form-control" name="victim_address" placeholder="Location Address" required>
+                </div>
+                <br>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="contact_subject" placeholder="Subject" required="">
+                   <label>Subject</label>
+                   <input type="text" class="form-control" name="contact_subject" placeholder="Subject" required="">
                 </div>
+                <br>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="client_message" rows="8" placeholder="Message" required=""></textarea>
+                <label>Message</label>
+                  <textarea class="form-control" name="victim_message" rows="8" placeholder="Message" required></textarea>
                 </div>
+                <br>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-{#                  <div class="error-message"></div>#}
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                  <button type="submit">Send Message</button>
+                    <button type="submit">Send Message</button>
                 </div>
 
               </div>

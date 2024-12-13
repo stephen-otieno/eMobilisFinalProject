@@ -1,5 +1,5 @@
 body {
-    background-color: beige;
+    background-color: white;
 }
 .main {
     display: flex;
@@ -9,17 +9,26 @@ body {
     margin-top: 1cm;
 }
 
+.bdy1 {
+    background-color: white;
+}
+
 .scn1 {
     margin-top: 2cm;
     width: 37%;
     height: auto;
-    background-color: #0a3622;
+    background-color: #008374;
     border-radius: 8px;
     color: white;
     font-size: x-large;
     font-family: "Times New Roman", ui-monospace;
     padding: 1cm;
     justify-items: center;
+
+}
+
+.section2 {
+    width: 50%;
 
 }
 
@@ -47,4 +56,8 @@ body {
 .btn2:hover {
         background-color: #0f3d81;
 
+}
+
+.hdg {
+    color: red;
 }
