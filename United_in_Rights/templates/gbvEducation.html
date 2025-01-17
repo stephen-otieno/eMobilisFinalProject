@@ -12,13 +12,23 @@
 <body>
 
 {#start of nav-bar#}
+
 <div class="navbar1">
 <nav class="navbar bg-#01433c-subtle">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <img src="{% static 'assets/img/logo3.png' %}" alt="Logo" width="50" height="30" class="d-inline-block align-text-top">
       <b class="hd1">United in Rights</b>
     </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+
+              <li><a href="{% url 'report_abuse' %}">Report</a></li>
+            <li><a href="#about">About</a></li>
+
+        </ul>
+      </nav>
   </div>
 </nav>
 </div>

@@ -17,7 +17,7 @@
     <div class="main">
 
     <div class="scn1">
-            <form action="/clients" method="post" enctype="multipart/form-data">
+            <form action="/registered/" method="post" enctype="multipart/form-data">
                  {% csrf_token %}
 
 
@@ -39,13 +39,13 @@
     <label> Telephone <br>
         <input type="number" name="telephone_number" placeholder="Enter your phone number">
 
-    </label>
+    </label> <br><br>
 
-                <label>
-                <a href="">
-        <input type="button" class="btn1" value="Register">
-                    </a>
-</label>
+       <div class="col-md-12 text-center">
+
+                    <button type="submit">Send Message</button>
+                </div>
+
 
         <label >
             <a href="{% url 'home' %}" >
